@@ -1,0 +1,16 @@
+### imagestream.yaml
+```yaml
+# imagestream.yaml
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: {{ .Values.app.name }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  tags:
+    - name: {{ .Values.app.tag }}
+      from:
+        kind: DockerImage
+        name: {{ .Values.app.image }}:{{ .Values.app.tag }}
+      importPolicy: {}
+```
