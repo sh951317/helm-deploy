@@ -1,0 +1,20 @@
+### pipeline.yaml
+```yaml
+# pipeline.yaml
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: {{ .Values.pipeline.name }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+      params:
+        - name: url
+          value: {{ .Values.pipeline.gitUrl }}
+        - name: revision
+          value: {{ .Values.pipeline.gitBranch }}
+    # Additional tasks can be added here
+```
