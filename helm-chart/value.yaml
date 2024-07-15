@@ -1,0 +1,27 @@
+```yaml
+# values.yaml
+app:
+  name: my-app
+  image: my-app-image
+  tag: latest
+  namespace: my-namespace
+
+pipeline:
+  name: my-app-pipeline
+  gitUrl: https://github.com/my-repo/my-app.git
+  gitBranch: main
+
+service:
+  port: 80
+  targetPort: 8080
+
+deployment:
+  replicas: 3
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+```
